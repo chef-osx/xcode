@@ -1,24 +1,25 @@
-xcode Cookbook
+Apple XCode Cookbook
 ==============
-TODO: Enter the cookbook description here.
 
-e.g.
-This cookbook makes your favorite breakfast sandwich.
+Installs Apple XCode and command line tools on OS X Mavericks.
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
 
-e.g.
-#### packages
-- `toaster` - xcode needs toaster to brown your bagel.
+#### Platforms
+
+* `mac_os_x`
+
+#### Cookbooks
+
+* `dmg`
+
+The DMGs are not accessible from Apple directly without logging into the developer center.
+You must place the DMGs on a fileserver yourself and set the URL attributes below.
 
 Attributes
 ----------
-TODO: List you cookbook attributes here.
 
-e.g.
-#### xcode::default
 <table>
   <tr>
     <th>Key</th>
@@ -27,20 +28,35 @@ e.g.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['xcode']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
+    <td><tt>['xcode']['url']</tt></td>
+    <td>String</td>
+    <td>URL to the Xcode DMG</td>
+    <td><tt>nil</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['xcode']['checksum']</tt></td>
+    <td>String</td>
+    <td>Checksum of the XCode DMG</td>
+    <td>(in the attributes file)</td>
+  </tr>
+  <tr>
+    <td><tt>['xcode']['cli']['url']</tt></td>
+    <td>String</td>
+    <td>URL to the Xcode Command-Line Tools DMG</td>
+    <td><tt>nil</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['xcode']['cli']['checksum']</tt></td>
+    <td>String</td>
+    <td>Checksum of the XCode CLI DMG</td>
+    <td>(in the attributes file)</td>
   </tr>
 </table>
 
 Usage
 -----
-#### xcode::default
-TODO: Write usage instructions for each cookbook.
 
-e.g.
-Just include `xcode` in your node's `run_list`:
+Just include `xcode` in your node's `run_list` and set the attributes above.
 
 ```json
 {
@@ -51,18 +67,21 @@ Just include `xcode` in your node's `run_list`:
 }
 ```
 
+Bugs
+----
+
+* Only supports OS X Mavericks at present. Pull requests welcome!
+
 Contributing
 ------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
 
-e.g.
 1. Fork the repository on Github
 2. Create a named feature branch (like `add_component_x`)
 3. Write your change
-4. Write tests for your change (if applicable)
-5. Run the tests, ensuring they all pass
-6. Submit a Pull Request using Github
+4. Submit a Pull Request using Github
 
 License and Authors
 -------------------
-Authors: TODO: List authors
+
+* Author: Julian C. Dunn (<jdunn@aquezada.com>)
+* License: Apache 2.0
