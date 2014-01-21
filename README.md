@@ -1,7 +1,7 @@
 Apple XCode Cookbook
 ==============
 
-Installs Apple XCode and command line tools on OS X Mavericks.
+Installs Apple XCode and command line tools on OS X Mountain Lion and Mavericks.
 
 Requirements
 ------------
@@ -70,7 +70,6 @@ Just include `xcode` in your node's `run_list` and set the attributes above.
 Bugs
 ----
 
-* Only supports OS X Mavericks at present. Pull requests welcome!
 
 Contributing
 ------------

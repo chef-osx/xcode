@@ -23,13 +23,13 @@ dmg_package "Xcode" do
   action :install
 end
 
-dmg_package "Command Line Tools (OS X 10.9)" do
+dmg_package node['xcode']['cli']['package_name'] do
   source node['xcode']['cli']['url']
   checksum node['xcode']['cli']['checksum']
-  volumes_dir "Command Line Developer Tools"
-  type "pkg"
+  volumes_dir node['xcode']['cli']['volumes_dir']
+  type node['xcode']['cli']['package_type']
+  package_id node['xcode']['cli']['package_id']
   action :install
-  package_id 'com.apple.pkg.CLTools_Executables'
 end
 
 cookbook_file "/Library/Preferences/com.apple.dt.Xcode.plist" do
