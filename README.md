@@ -1,7 +1,7 @@
 Apple XCode Cookbook
 ==============
 
-Installs Apple XCode and command line tools on OS X Mountain Lion and Mavericks.
+Installs Apple XCode and command line tools on OS X Lion, Mountain Lion and Mavericks.
 
 Requirements
 ------------
@@ -14,7 +14,7 @@ Requirements
 
 * `dmg`
 
-The DMGs are not accessible from Apple directly without logging into the developer center.
+Some DMGs are not accessible from Apple directly without logging into the developer center; those URLs are set to 'nil' by default.
 You must place the DMGs on a fileserver yourself and set the URL attributes below.
 The intended filenames are documented in the attributes file.
 

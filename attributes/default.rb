@@ -22,8 +22,15 @@ default['xcode']['url'] = nil # should point to xcode_5.0.2.dmg
 default['xcode']['checksum'] = '530cf754ca4350eaae6eff08019d3d411d5e38a9fd0e843c439d6337f18b3457'
 
 case node['platform_version'].to_f
+when 10.7
+  default['xcode']['cli']['url'] = 'https://devimages.apple.com.edgekey.net/downloads/xcode/command_line_tools_for_xcode_os_x_lion_april_2013.dmg'
+  default['xcode']['cli']['checksum'] = '20a3e1965c685c6c079ffe89b168c3975c9a106c4b33b89aeac93c8ffa4e0523'
+  default['xcode']['cli']['package_name'] = 'Command Line Tools (Lion)'
+  default['xcode']['cli']['package_type'] = 'mpkg'
+  default['xcode']['cli']['package_id'] = 'com.apple.pkg.DeveloperToolsCLI'
+  default['xcode']['cli']['volumes_dir'] = 'Command Line Tools (Lion)'
 when 10.8
-  default['xcode']['cli']['url'] = nil # should point to command_line_tools_os_x_mountain_lion_for_xcode__october_2013.dmg
+  default['xcode']['cli']['url'] = 'https://devimages.apple.com.edgekey.net/downloads/xcode/command_line_tools_os_x_mountain_lion_for_xcode_october_2013.dmg'
   default['xcode']['cli']['checksum'] = '635c1cf6c93b397ef882c27211ef01e54e5b1d9d2d92fc870f1e07efd54cfe35'
   default['xcode']['cli']['package_name'] = 'Command Line Tools (Mountain Lion)'
   default['xcode']['cli']['package_type'] = 'mpkg'
