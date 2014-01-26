@@ -3,9 +3,14 @@ xcode CHANGELOG
 
 This file is used to list changes made in each version of the xcode cookbook.
 
-0.1.0
+1.1.0
 -----
-- [your_name] - Initial release of xcode
+
+- Add Mountain Lion support
+
+1.0.0
+-----
+- Initial release of xcode
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
