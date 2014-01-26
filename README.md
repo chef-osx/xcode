@@ -16,6 +16,7 @@ Requirements
 
 The DMGs are not accessible from Apple directly without logging into the developer center.
 You must place the DMGs on a fileserver yourself and set the URL attributes below.
+The intended filenames are documented in the attributes file.
 
 Attributes
 ----------
@@ -70,6 +71,8 @@ Just include `xcode` in your node's `run_list` and set the attributes above.
 Bugs
 ----
 
+Only supports Mavericks and Mountain Lion at the moment. Pull requests
+are welcome!
 
 Contributing
 ------------
