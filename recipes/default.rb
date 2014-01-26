@@ -32,10 +32,14 @@ dmg_package node['xcode']['cli']['package_name'] do
   action :install
 end
 
-cookbook_file "/Library/Preferences/com.apple.dt.Xcode.plist" do
-  source "com.apple.dt.Xcode.plist"
+template "/Library/Preferences/com.apple.dt.Xcode.plist" do
+  source "com.apple.dt.Xcode.plist.erb"
   owner "root"
   group "wheel"
   mode 00644
+  variables({
+    :last_gm_license => node['xcode']['last_gm_license'],
+    :version => node['xcode']['version']
+  })
   action :create
 end
