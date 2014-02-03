@@ -3,6 +3,11 @@ xcode CHANGELOG
 
 This file is used to list changes made in each version of the xcode cookbook.
 
+1.1.2
+-----
+
+- Added Lion support
+
 1.1.0
 -----
 
