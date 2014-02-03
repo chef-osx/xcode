@@ -18,11 +18,25 @@
 # limitations under the License.
 #
 
-default['xcode']['url'] = nil # should point to xcode_5.0.2.dmg
-default['xcode']['checksum'] = '530cf754ca4350eaae6eff08019d3d411d5e38a9fd0e843c439d6337f18b3457'
-
 case node['platform_version'].to_f
+when 10.7
+  default['xcode']['url'] = nil # should point to xcode4620419895a.dmg
+  default['xcode']['checksum'] = '3057224339823dae8a56943380a438065e92cff1ad4ab5a6a84f94f7a94dc035'
+  default['xcode']['last_gm_license'] = "EA0720"
+  default['xcode']['version'] = "4.6.2"
+
+  default['xcode']['cli']['url'] = nil # should point to xcode462_cltools_10_76938260a.dmg
+  default['xcode']['cli']['checksum'] = '20a3e1965c685c6c079ffe89b168c3975c9a106c4b33b89aeac93c8ffa4e0523'
+  default['xcode']['cli']['package_name'] = 'Command Line Tools (Lion)'
+  default['xcode']['cli']['package_type'] = 'mpkg'
+  default['xcode']['cli']['package_id'] = 'com.apple.pkg.DeveloperToolsCLI'
+  default['xcode']['cli']['volumes_dir'] = 'Command Line Tools (Lion)'
 when 10.8
+  default['xcode']['url'] = nil # should point to xcode_5.0.2.dmg
+  default['xcode']['checksum'] = '530cf754ca4350eaae6eff08019d3d411d5e38a9fd0e843c439d6337f18b3457'
+  default['xcode']['last_gm_license'] = "EA1057"
+  default['xcode']['version'] = "5.0.2"
+
   default['xcode']['cli']['url'] = nil # should point to command_line_tools_os_x_mountain_lion_for_xcode__october_2013.dmg
   default['xcode']['cli']['checksum'] = '635c1cf6c93b397ef882c27211ef01e54e5b1d9d2d92fc870f1e07efd54cfe35'
   default['xcode']['cli']['package_name'] = 'Command Line Tools (Mountain Lion)'
@@ -30,6 +44,11 @@ when 10.8
   default['xcode']['cli']['package_id'] = 'com.apple.pkg.DeveloperToolsCLI'
   default['xcode']['cli']['volumes_dir'] = 'Command Line Tools (Mountain Lion)'
 when 10.9
+  default['xcode']['url'] = nil # should point to xcode_5.0.2.dmg
+  default['xcode']['checksum'] = '530cf754ca4350eaae6eff08019d3d411d5e38a9fd0e843c439d6337f18b3457'
+  default['xcode']['last_gm_license'] = "EA1057"
+  default['xcode']['version'] = "5.0.2"
+
   default['xcode']['cli']['url'] = nil # should point to command_line_tools_os_x_mavericks_for_xcode__late_october_2013.dmg
   default['xcode']['cli']['checksum'] = 'db764b9f13ae8c7134dfd6297654fb9ed09502708fdbc88e32f5390258f4b062'
   default['xcode']['cli']['package_name'] = 'Command Line Tools (OS X 10.9)'
