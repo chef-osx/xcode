@@ -3,7 +3,7 @@ Apple XCode Cookbook
 
 Installs Apple XCode and command line tools on OS X Mountain Lion and Mavericks.
 
-** Note: ** The official [build-essential](http://ckbk.it/build-essential) cookbook now supports installing XCode, and is better-maintained than this cookbook.
+** Note: ** The official [build-essential](http://ckbk.it/build-essential) cookbook now supports installing the command line tools, and is better-maintained than this cookbook.
 
 Requirements
 ------------
