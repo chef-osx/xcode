@@ -56,13 +56,13 @@ when /^10\.9/
   default["xcode"]["cli"]["package_id"] = "com.apple.pkg.CLTools_Executables"
   default["xcode"]["cli"]["volumes_dir"] = "Command Line Developer Tools"
 when /^10\.10/
-  default["xcode"]["url"] = nil # should point to xcode_6.1.1.dmg
-  default["xcode"]["checksum"] = "1ad39f89a398d473cfcc5d610b836d240668804818afe58374aa58dcf56a5ccc"
-  default["xcode"]["last_gm_license"] = "EA0720"
-  default["xcode"]["version"] = "6.1.1"
+  default["xcode"]["url"] = nil # should point to Xcode_6.4.dmg
+  default["xcode"]["checksum"] = "fc25d75f23d82084dd740d7e29d0e5adea96dd600d1e19bc86408c133d1edf66"
+  default["xcode"]["last_gm_license"] = "EA1187"
+  default["xcode"]["version"] = "6.4"
 
-  default["xcode"]["cli"]["url"] = nil # should point to commandlinetoolsosx10.10forxcode6.1.1.dmg
-  default["xcode"]["cli"]["checksum"] = "6ed09df930a334bf9561110f563a9b9b7100c239540eafebc92047221de531f8"
+  default["xcode"]["cli"]["url"] = nil # should point to Command_Line_Tools_OS_X_10.10_for_Xcode_6.4.dmg
+  default["xcode"]["cli"]["checksum"] = "fe22e9962ab4e4970e3d618c7ed9d67cfaca92b1a202ba41cdce076508137a95"
   default["xcode"]["cli"]["package_name"] = "Command Line Tools (OS X 10.10)"
   default["xcode"]["cli"]["package_type"] = "pkg"
   default["xcode"]["cli"]["package_id"] = "com.apple.pkg.CLTools_Executables"
