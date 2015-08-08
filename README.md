@@ -1,9 +1,9 @@
-Apple XCode Cookbook
+Apple Xcode Cookbook
 ==============
 
-Installs Apple XCode and command line tools on OS X Mountain Lion and Mavericks.
+Installs Apple Xcode and command line tools on OS X Lion, Mountain Lion, Mavericks, and Yosemite.
 
-** Note: ** The official [build-essential](http://ckbk.it/build-essential) cookbook now supports installing the command line tools, and is better-maintained than this cookbook.
+** Note: ** The official [build-essential](https://supermarket.chef.io/cookbooks/build-essential) cookbook now supports installing the command line tools, and is better-maintained than this cookbook.
 
 Requirements
 ------------
@@ -23,38 +23,12 @@ The intended filenames are documented in the attributes file.
 Attributes
 ----------
 
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['xcode']['url']</tt></td>
-    <td>String</td>
-    <td>URL to the Xcode DMG</td>
-    <td><tt>nil</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['xcode']['checksum']</tt></td>
-    <td>String</td>
-    <td>Checksum of the XCode DMG</td>
-    <td>(in the attributes file)</td>
-  </tr>
-  <tr>
-    <td><tt>['xcode']['cli']['url']</tt></td>
-    <td>String</td>
-    <td>URL to the Xcode Command-Line Tools DMG</td>
-    <td><tt>nil</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['xcode']['cli']['checksum']</tt></td>
-    <td>String</td>
-    <td>Checksum of the XCode CLI DMG</td>
-    <td>(in the attributes file)</td>
-  </tr>
-</table>
+| Key                            | Type   | Description                             | Default                  |
+|--------------------------------|--------|-----------------------------------------|--------------------------|
+| `['xcode']['url']`             | String | URL to the Xcode DMG                    | `nil`                    |
+| `['xcode']['checksum']`        | String | Checksum of the Xcode DMG               | (in the attributes file) |
+| `['xcode']['cli']['url']`      | String | URL to the Xcode Command-Line Tools DMG | `nil`                    |
+| `['xcode']['cli']['checksum']` | String | Checksum of the Xcode CLI DMG           | (in the attributes file) |
 
 Usage
 -----
@@ -73,8 +47,7 @@ Just include `xcode` in your node's `run_list` and set the attributes above.
 Bugs
 ----
 
-Only supports Mavericks and Mountain Lion at the moment. Pull requests
-are welcome!
+Only supports Mac OS X 10.7 - 10.10 at the moment. Pull requests are welcome!
 
 Contributing
 ------------
