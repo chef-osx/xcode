@@ -67,4 +67,16 @@ when /^10\.10/
   default["xcode"]["cli"]["package_type"] = "pkg"
   default["xcode"]["cli"]["package_id"] = "com.apple.pkg.CLTools_Executables"
   default["xcode"]["cli"]["volumes_dir"] = "Command Line Developer Tools"
+when /^10\.11/
+  default["xcode"]["url"] = nil # should point to Xcode_7.3.1.dmg
+  default["xcode"]["checksum"] = "bb0dedf613e86ecb46ced945913fa5069ab716a0ade1035e239d70dee0b2de1b"
+  default["xcode"]["last_gm_license"] = "EA1327"
+  default["xcode"]["version"] = "7.3.1"
+
+  default["xcode"]["cli"]["url"] = nil # should point to Command_Line_Tools_OS_X_10.11_for_Xcode_7.3.1.dmg
+  default["xcode"]["cli"]["checksum"] = "0c80753d207fa2254bcc1c880d4d8907071241f3f2e092c7caa87e340245835a"
+  default["xcode"]["cli"]["package_name"] = "Command Line Tools (OS X 10.11)"
+  default["xcode"]["cli"]["package_type"] = "pkg"
+  default["xcode"]["cli"]["package_id"] = "com.apple.pkg.CLTools_Executables"
+  default["xcode"]["cli"]["volumes_dir"] = "Command Line Developer Tools"
 end
