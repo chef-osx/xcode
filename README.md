@@ -1,7 +1,7 @@
 Apple Xcode Cookbook
 ==============
 
-Installs Apple Xcode and command line tools on OS X Lion, Mountain Lion, Mavericks, and Yosemite.
+Installs Apple Xcode and command line tools on OS X Lion, Mountain Lion, Mavericks, Yosemite, and El Capitan.
 
 ** Note: ** The official [build-essential](https://supermarket.chef.io/cookbooks/build-essential) cookbook now supports installing the command line tools, and is better-maintained than this cookbook.
 
@@ -47,7 +47,7 @@ Just include `xcode` in your node's `run_list` and set the attributes above.
 Bugs
 ----
 
-Only supports Mac OS X 10.7 - 10.10 at the moment. Pull requests are welcome!
+Only supports Mac OS X 10.7 - 10.11 at the moment. Pull requests are welcome!
 
 Contributing
 ------------

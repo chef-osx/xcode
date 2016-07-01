@@ -3,6 +3,12 @@ xcode CHANGELOG
 
 This file is used to list changes made in each version of the xcode cookbook.
 
+1.3.0
+-----
+
+- Add El Capitan support
+- Update Xcode version for Yosemite
+
 1.2.0
 -----
 
