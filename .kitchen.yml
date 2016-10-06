@@ -1,0 +1,28 @@
+---
+driver:
+  name: vagrant
+  provider: vmware_fusion
+
+provisioner:
+  name: chef_zero
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: macosx-10.11
+    driver:
+      customize:
+        cpus: 2
+  - name: macosx-10.12
+    driver:
+      customize:
+        cpus: 2
+
+suites:
+  - name: default
+    run_list:
+      - recipe[xcode-tests::default]
+    verifier:
+      inspec_tests:
+        - test/recipes

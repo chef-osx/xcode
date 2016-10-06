@@ -30,6 +30,7 @@ tmtags
 .project
 .settings
 mkmf.log
+.idea/
 
 ## COMPILED ##
 ##############
@@ -81,6 +82,11 @@ Berksfile
 Berksfile.lock
 cookbooks/*
 tmp
+
+# Policyfile #
+##############
+Policyfile.rb
+Policyfile.lock.json
 
 # Cookbooks #
 #############

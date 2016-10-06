@@ -1,9 +1,5 @@
 #
-# Cookbook Name:: xcode
-# Attribute:: default
-#
-# Author:: Julian C. Dunn (<jdunn@aquezada.com>)
-# Copyright (c) 2014, Julian Dunn
+# Author:: Antek S. Baranski (<antek.baranski@gmail.com>)
 # Copyright (C) 2016, ROBLOX, Inc.
 # License:: Apache License, Version 2.0
 #
@@ -21,6 +17,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+# Cookbook Name:: xcode-tests
+# Recipe:: default
+#
 
-default['xcode']['databag'] = 'xcode_versions'
-default['xcode']['install_root'] = nil
+include_recipe 'xcode'
+
+xcode_versions = data_bag(node['xcode']['databag'])
+
+xcode_versions.each do |version|
+  xcode = data_bag_item(node['xcode']['databag'], version)
+
+  xcode_app xcode['id'] do
+    url xcode['url']
+    checksum xcode['checksum']
+    app xcode['app']
+    multi_install
+    install_root node['xcode']['install_root'] unless node['xcode']['install_root'].nil?
+    force xcode['force'] unless xcode['force'].nil?
+    action xcode['action']
+  end
+end

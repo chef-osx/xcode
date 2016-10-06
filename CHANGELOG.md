@@ -3,6 +3,12 @@ xcode CHANGELOG
 
 This file is used to list changes made in each version of the xcode cookbook.
 
+2.0.0
+-----
+
+- Re-write of the cookbook to be a custom resource and allow for multiple Xcode installs on a single node
+- Removed command line tool installation as that is handled by build-essentials cookbook
+
 1.3.0
 -----
 
