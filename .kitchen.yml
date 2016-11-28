@@ -1,0 +1,46 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+  require_chef_omnibus: latest
+
+platforms:
+ - name: mac_osx_elcapitan
+   os_type: mac_os_x
+   driver:
+     provision: true
+     network:
+       - ["private_network", {ip: "192.168.33.33"}]
+     gui: false
+     box: jhcook/osx-elcapitan-10.11
+
+suites:
+  - name: xcode_dmg_installer
+    run_list:
+      - recipe[xcode_test::default]
+    attributes:
+      xcode:
+        url: "http://192.168.33.1/Xcode_7.3.1.dmg"
+        checksum: "bb0dedf613e86ecb46ced945913fa5069ab716a0ade1035e239d70dee0b2de1b"
+        last_gm_license: "EA1327"
+        version: "7.3.1"
+        cli:
+          url: "http://192.168.33.1/Command_Line_Tools_OS_X_10.11_for_Xcode_7.3.1.dmg"
+          checksum: "0c80753d207fa2254bcc1c880d4d8907071241f3f2e092c7caa87e340245835a"
+          package_name: "Command Line Tools (OS X 10.11)"
+
+  - name: xcode_xip_archive
+    run_list:
+      - recipe[xcode_test::default]
+    attributes:
+      xcode:
+        url: "http://192.168.33.1/Xcode_8.1.xip"
+        checksum: "30378e76f7d1adcf3573fc990bd7b46e0939b466b83338ba8f4290444462e5da"
+        last_gm_license: "8B62"
+        version: "8.1"
+        cli:
+          url: "http://192.168.33.1/Command_Line_Tools_macOS_10.12_for_Xcode_8.1.dmg"
+          checksum: "d1697a3f76a1241f32793dee24166415dd64bfbac07dbbf84b02b0b59bf713c5"
+          package_name: "Command Line Tools (macOS 10.12)"
