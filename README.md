@@ -27,6 +27,7 @@ Attributes
 |--------------------------------|--------|-----------------------------------------|--------------------------|
 | `['xcode']['url']`             | String | URL to the Xcode DMG                    | `nil`                    |
 | `['xcode']['checksum']`        | String | Checksum of the Xcode DMG               | (in the attributes file) |
+| `['xcode']['package_type']`    | String | Type of Package ('dmg' or 'zip')        | (in the attributes file) |
 | `['xcode']['cli']['url']`      | String | URL to the Xcode Command-Line Tools DMG | `nil`                    |
 | `['xcode']['cli']['checksum']` | String | Checksum of the Xcode CLI DMG           | (in the attributes file) |
 
