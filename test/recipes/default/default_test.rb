@@ -14,3 +14,8 @@ describe file('/Library/Preferences/com.apple.dt.Xcode.plist') do
   it { should be_owned_by 'root' }
   its('mode') { should cmp '00644' }
 end
+
+describe file("/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS\ 9.3.simruntime") do
+  it { should be_owned_by 'root' }
+  its('mode') { should cmp '01775' }
+end

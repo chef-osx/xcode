@@ -38,7 +38,7 @@ module Xcode
         attribute(:url, kind_of: String, required: true)
         attribute(:checksum, kind_of: String, required: true)
         attribute(:app, kind_of: String, required: true)
-        attribute(:multi_install, kind_of: [TrueClass, FalseClass], default: true)
+        attribute(:install_suffix, kind_of: String, default: nil)
         attribute(:install_root, kind_of: String, default: '/Applications')
         attribute(:force, kind_of: [TrueClass, FalseClass], default: false)
       end
@@ -50,7 +50,7 @@ module Xcode
 
         action :install do
           return if exist?
-          raise unless Chef.node.platform_family.eql?('mac_os_x')
+          raise unless Chef.node['platform_family'].eql?('mac_os_x')
           install_app
         end
 
@@ -80,13 +80,32 @@ module Xcode
         end
 
         def install_dmg
+          temp_pkg_dir = ::File.join(Chef::Config[:file_cache_path], "Xcode_#{new_resource.version}")
+
+          directory temp_pkg_dir do
+            recursive true
+          end
+
           dmg_package new_resource.app do
             source new_resource.url
             checksum new_resource.checksum
             dmg_name ::File.basename(new_resource.url, '.dmg')
             owner 'root'
             type 'app'
+            destination temp_pkg_dir
             action :install
+          end
+
+          execute "Move Xcode app install_dir" do
+            command "mv -f #{temp_pkg_dir}/Xcode.app #{install_dir}"
+            only_if { ::Dir.exist?("#{temp_pkg_dir}/Xcode.app") }
+          end
+
+          # Clean up temp
+          directory temp_pkg_dir do
+            recursive true
+            action :delete
+            only_if { Dir.exists?(temp_pkg_dir) }
           end
         end
 
@@ -94,9 +113,6 @@ module Xcode
         def post_install
           ruby_block 'Xcode post install' do
             block do
-              if new_resource.multi_install || !new_resource.install_root.eql?('/Applications')
-                ::File.rename('/Applications/Xcode.app', install_dir)
-              end
               # Install any additional packages hiding in the Xcode installation path
               xcode_packages =
                 ::Dir.entries("#{install_dir}/Contents/Resources/Packages/").select { |f| !::File.directory? f }
@@ -105,8 +121,12 @@ module Xcode
                   command "sudo installer -pkg #{install_dir}/Contents/Resources/Packages/#{pkg} -target /"
                 end
               end unless xcode_packages.nil?
+            end
+            only_if { ::Dir.exist?(install_dir) }
+
+            block do
               execute 'xcode-select' do
-                command "xcode-select -s #{install_dir}/Contents/Developer"
+                command "xcode-select -s /Applications/Xcode.app/Contents/Developer"
               end
             end
             only_if { ::Dir.exist?('/Applications/Xcode.app') }
@@ -118,29 +138,33 @@ module Xcode
           # Accept the Xcode license, this creates the /Library/Preferences/com.apple.dt.Xcode.plist file
           execute 'Accept xcode license' do
             command "#{install_dir}/Contents/Developer/usr/bin/xcodebuild -license accept"
-            action :run
-            only_if { ::File.exist?("#{install_dir}/Contents/Developer/usr/bin/xcodebuild") }
-            # TODO: Do a proper version check such that the oldest version is always accepted.
-            # only_if { newer?("#{install_dir}/Contents/Developer/usr/bin/xcodebuild -version") }
+            only_if do
+              if ::File.exist?('/Library/Preferences/com.apple.dt.Xcode.plist')
+                curr_vers = `/usr/libexec/PlistBuddy -c 'Print :IDEXcodeVersionForAgreedToGMLicense' /Library/Preferences/com.apple.dt.Xcode.plist`.chomp
+                next_vers = `/usr/libexec/PlistBuddy -c 'Print :DTXcode' #{install_dir}/Contents/Info.plist`.chomp.to_i.to_s.split(//).join('.')
+                Gem::Version.new(next_vers) > Gem::Version.new(curr_vers)
+              else
+                true
+              end
+            end
           end
         end
 
         def install_dir
           ::File.join(new_resource.install_root,
-                      "Xcode#{new_resource.multi_install ? "_#{new_resource.version}" : ''}.app")
+                      "Xcode#{new_resource.install_suffix ? "_#{new_resource.install_suffix}" : ''}.app")
         end
 
         def exist?
-          new_resource.force ? false : Dir.exist?(install_dir)
+          new_resource.force ? false : ::Dir.exist?(install_dir)
         end
 
         # Cleanup the installer file
         def delete_installer_file
-          file ::File.join(Chef::Config[:file_cache_path], ::File.basename(new_resource.url, '.dmg')) do
+          file ::File.join(Chef::Config[:file_cache_path], ::File.basename(new_resource.url)) do
             action :delete
             only_if do
-              ::File.exist?(::File.join(Chef::Config[:file_cache_path],
-                                        ::File.basename(new_resource.url, '.dmg')))
+              ::File.exist?(::File.join(Chef::Config[:file_cache_path], ::File.basename(new_resource.url)))
             end
           end
         end

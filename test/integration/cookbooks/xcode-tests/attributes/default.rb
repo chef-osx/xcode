@@ -1,10 +1,10 @@
 #
-# Cookbook Name:: xcode
+# Cookbook Name:: xcode-tests
 # Attribute:: default
 #
-# Author:: Julian C. Dunn (<jdunn@aquezada.com>)
+# Author:: Brenton Bartel
 # Copyright (c) 2014, Julian Dunn
-# Copyright (C) 2016, ROBLOX, Inc.
+# Copyright (C) 2017, ROBLOX, Inc.
 # License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,10 +22,4 @@
 # limitations under the License.
 #
 
-default['xcode']['app']['databag'] = 'xcode_app_versions'
-default['xcode']['app']['install_root'] = nil
-
-default['xcode']['sim']['databag'] = 'xcode_sim_versions'
-
-default['xcode']['last_gm_license'] = ''
-default['xcode']['version_gm_license'] = ''
+default['xcode']['link_id'] = '7_3_1'

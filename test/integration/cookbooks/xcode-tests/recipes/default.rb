@@ -23,18 +23,36 @@
 
 include_recipe 'xcode'
 
-xcode_versions = data_bag(node['xcode']['databag'])
+xcode_versions = data_bag(node['xcode']['app']['databag'])
 
 xcode_versions.each do |version|
-  xcode = data_bag_item(node['xcode']['databag'], version)
+  xcode = data_bag_item(node['xcode']['app']['databag'], version)
 
   xcode_app xcode['id'] do
     url xcode['url']
     checksum xcode['checksum']
     app xcode['app']
-    multi_install
+    install_suffix xcode['id']
     install_root node['xcode']['install_root'] unless node['xcode']['install_root'].nil?
     force xcode['force'] unless xcode['force'].nil?
     action xcode['action']
+  end
+end
+
+link "/Applications/Xcode.app" do
+  to "Xcode_#{node['xcode']['link_id']}.app"
+  owner 'root'
+  group 'wheel'
+end
+
+simulator_versions = data_bag(node['xcode']['sim']['databag'])
+
+simulator_versions.each do |version|
+  simulator = data_bag_item(node['xcode']['sim']['databag'], version)
+
+  xcode_simulator simulator['name'] do
+    url simulator['url']
+    checksum simulator['checksum']
+    action simulator['action']
   end
 end
