@@ -44,6 +44,23 @@ Just include `xcode` in your node's `run_list` and set the attributes above.
 }
 ```
 
+Test
+----
+Prerequisites:
+- HTTP server which provides `Xcode` installers.
+If the host machine has installed python, just run in the directory where `Xcode` installers are:
+```
+python -m SimpleHTTPServer 80
+```
+- Vagrant 1.8.6
+- VirtualBox 5.1.10 + ExtensionPack
+- ChefDK latest
+
+This cookbook use the test-kitchen tool for developing infrastructure code. To verify cookbook execute command in terminal 
+```
+kitchen test
+```
+
 Bugs
 ----
 
