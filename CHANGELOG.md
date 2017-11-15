@@ -3,6 +3,11 @@ xcode CHANGELOG
 
 This file is used to list changes made in each version of the xcode cookbook.
 
+2.1.1
+-----
+
+- Fix ruby_block by splitting into 2 blocks for post_install
+
 2.1.0
 -----
 

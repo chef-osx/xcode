@@ -111,7 +111,7 @@ module Xcode
 
         # The `post_install` function is only called if the function 'install_app' is called.
         def post_install
-          ruby_block 'Xcode post install' do
+          ruby_block 'Xcode post_install install packages' do
             block do
               # Install any additional packages hiding in the Xcode installation path
               xcode_packages =
@@ -123,7 +123,9 @@ module Xcode
               end unless xcode_packages.nil?
             end
             only_if { ::Dir.exist?(install_dir) }
+          end
 
+          ruby_block 'Xcode post_install xcode-select' do
             block do
               execute 'xcode-select' do
                 command "xcode-select -s /Applications/Xcode.app/Contents/Developer"
