@@ -3,6 +3,12 @@ xcode CHANGELOG
 
 This file is used to list changes made in each version of the xcode cookbook.
 
+2.1.2
+-----
+
+- Fix path for xcode-select
+- Update versions in example test databags
+
 2.1.1
 -----
 

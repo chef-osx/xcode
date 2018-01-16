@@ -128,10 +128,10 @@ module Xcode
           ruby_block 'Xcode post_install xcode-select' do
             block do
               execute 'xcode-select' do
-                command "xcode-select -s /Applications/Xcode.app/Contents/Developer"
+                command "xcode-select -s #{install_dir}/Contents/Developer"
               end
             end
-            only_if { ::Dir.exist?('/Applications/Xcode.app') }
+            only_if { ::Dir.exist?(install_dir) }
           end
         end
 

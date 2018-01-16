@@ -135,6 +135,9 @@ The data bag needs to provide the following attributes at the very least:
 `name` as provided by `InstallPrefix` in download index (ex: `/Library/Developer/CoreSimulator/Profiles/Runtimes`)
 
 
+Notes
+-----
+When testing, ensure the VM has sufficient space for Xcode & simulators.
 
 Bugs
 ----
